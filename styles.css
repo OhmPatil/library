@@ -1,0 +1,15 @@
+:root{
+    /* background-color: black; */
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.card{
+    width: 450px;
+    height: 250px;
+    border: 2px solid black;
+}
