@@ -37,8 +37,8 @@ function addBook(title, author, pages, isRead){
     addBookToDom()
 }
 
-addBook('Hobbit', 'me', 200, false)
-addBook('asdasd', 'you', 500, true)
+addBook('Hobbit', 'yah', 200, false)
+addBook('asdasd', 'woo', 500, true)
 
 // Function to make card and display book on page
 function addBookToDom(){
@@ -66,19 +66,26 @@ function addBookToDom(){
 
         let isRead = document.createElement('div')
         isRead.classList.add('isRead')
-        isRead.textContent = myBook.isRead
+        if (!myBook.isRead) isRead.textContent = 'Read Status: Not Read ❌'
+        else isRead.textContent = 'Read Status: Read ✅'
 
         let removeButton = document.createElement('button')
         removeButton.classList.add('remove-button')
+        removeButton.classList.add('btn')
+        removeButton.classList.add('btn-danger')
         removeButton.textContent = 'Remove'
 
         let isReadButton = document.createElement('button')
         isReadButton.classList.add('isReadButton')
         if (!myBook.isRead){
             isReadButton.textContent = 'Mark as read'
+            isReadButton.classList.add('btn')
+            isReadButton.classList.add('btn-success')
         }
         else{
             isReadButton.textContent = 'Mark as unread'
+            isReadButton.classList.add('btn')
+            isReadButton.classList.add('btn-warning')
         }
 
         card.appendChild(title)
@@ -98,6 +105,8 @@ function addBookToDom(){
         document.querySelector('.book-container').appendChild(card)
         console.log('Card created');
         card_id++
+
+        
 
         // Function to remove book from myLibrary[]
         function removeBook(){

@@ -2,28 +2,33 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .book-container{
     width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1%;
+    margin-top: 2rem;
+    padding: 15px;
 
 }
 
 .card{
-    width: 400px;
-    height: 200px;
+    /* width: 400px; */
+    /* height: 200px; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 2%;
+    padding: 5%;
+    gap: 0.5rem;
 }
 
 .title{
     text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
 }
 
 .book-title{
@@ -42,7 +47,31 @@
     font-size: 1.25rem;
 }
 
-.form{
+#form{
     display: flex;
-    gap: 2%;
+    flex-direction: column;
+    width: 50vw;
+    border: 2px solid black;
+    font-size: 1.30rem;
+    gap: 8px;
+
+    
+}
+
+/* Form container */
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+#form-isRead{
+    font-size: 1.5rem;
 }
