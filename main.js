@@ -1,11 +1,13 @@
-let add_book_button = document.querySelector('.add-book-button')
+const add_book_button = document.querySelector('.add-book-button')
 add_book_button.addEventListener('click', displayForm)
 
-let form = document.querySelector('#form')
+const form = document.querySelector('#form')
 form.addEventListener('submit', function(e){
     getFormData()
     e.preventDefault()
 })
+
+
 
 let myLibrary = []
 
@@ -43,6 +45,7 @@ function addBookToDom(){
         Card.remove()
     })
 
+    let card_id = 0
     myLibrary.forEach(myBook =>{
         let card = document.createElement('div')
         card.classList.add('card')
@@ -59,15 +62,32 @@ function addBookToDom(){
         let isRead = document.createElement('div')
         isRead.classList.add('isRead')
         isRead.textContent = myBook.isRead
+        let removeButton = document.createElement('button')
+        removeButton.classList.add('remove-button')
+        removeButton.textContent = 'Remove'
         
         card.appendChild(title)
         card.appendChild(author)
         card.appendChild(pages)
         card.appendChild(isRead)
+        card.appendChild(removeButton)
+        card.dataset.cardID = card_id
+
+        removeButton.dataset.cardID = card_id
+        removeButton.addEventListener('click', removeBook)
 
         
         document.querySelector('.book-container').appendChild(card)
         console.log('Card created');
+        card_id++
+
+        function removeBook(){
+            let bookToRemove = parseInt(removeButton.dataset.cardID)
+            myLibrary.splice(bookToRemove, 1)
+            console.log('Book Removed');
+            addBookToDom()
+        }
+
     })
 }
 
@@ -82,6 +102,3 @@ function getFormData(){
     addBook(title, author, pages, isRead)
     form.reset()
 }
-
-
-console.log(myLibrary);
