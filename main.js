@@ -55,24 +55,38 @@ function addBookToDom(){
         let title = document.createElement('div')
         title.classList.add('book-title')
         title.textContent = `Title: ${myBook.title}`
+
         let author = document.createElement('div')
         author.classList.add('author')
         author.textContent = `By ${myBook.author}`
+
         let pages = document.createElement('div')
         pages.classList.add('pages')
         pages.textContent = `No. of pages: ${myBook.pages}`
+
         let isRead = document.createElement('div')
         isRead.classList.add('isRead')
         isRead.textContent = myBook.isRead
+
         let removeButton = document.createElement('button')
         removeButton.classList.add('remove-button')
         removeButton.textContent = 'Remove'
-        
+
+        let isReadButton = document.createElement('button')
+        isReadButton.classList.add('isReadButton')
+        if (!myBook.isRead){
+            isReadButton.textContent = 'Mark as read'
+        }
+        else{
+            isReadButton.textContent = 'Mark as unread'
+        }
+
         card.appendChild(title)
         card.appendChild(author)
         card.appendChild(pages)
         card.appendChild(isRead)
         card.appendChild(removeButton)
+        card.appendChild(isReadButton)
         card.dataset.cardID = card_id
 
         removeButton.dataset.cardID = card_id
