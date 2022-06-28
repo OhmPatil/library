@@ -87,10 +87,13 @@ function addBookToDom(){
         card.appendChild(isRead)
         card.appendChild(removeButton)
         card.appendChild(isReadButton)
+        
         card.dataset.cardID = card_id
-
         removeButton.dataset.cardID = card_id
+        isReadButton.dataset.cardID = card_id
+
         removeButton.addEventListener('click', removeBook)
+        isReadButton.addEventListener('click', changeReadStatus)
   
         document.querySelector('.book-container').appendChild(card)
         console.log('Card created');
@@ -104,6 +107,11 @@ function addBookToDom(){
             addBookToDom()
         }
 
+        // Function to change read status of book
+        function changeReadStatus(){
+            myBook.isRead = !myBook.isRead
+            addBookToDom()
+        }
     })
 }
 
