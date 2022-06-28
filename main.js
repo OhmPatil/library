@@ -1,20 +1,20 @@
+// To show form when 'Add book' button is clicked
 const add_book_button = document.querySelector('.add-book-button')
 add_book_button.addEventListener('click', displayForm)
+function displayForm(){
+    document.getElementById('form').style.display = ''
+}
 
-const form = document.querySelector('#form')
+// Logic for when form is submitted
+const form = document.getElementById('form')
 form.addEventListener('submit', function(e){
     getFormData()
     e.preventDefault()
 })
 
-
-
 let myLibrary = []
 
-function displayForm(){
-    document.getElementById('form').style.display = ''
-}
-
+// Book object constructor and prototype
 function Book(title, author, pages, isRead){
     this.title = title
     this.author = author
@@ -29,6 +29,7 @@ Book.prototype.info = function(){
     else return('read good job')
 }
 
+// Function to add book to myLibrary[]
 function addBook(title, author, pages, isRead){
     let newBook = new Book(title, author, pages, isRead)
     myLibrary.push(newBook)
@@ -39,6 +40,7 @@ function addBook(title, author, pages, isRead){
 addBook('Hobbit', 'me', 200, false)
 addBook('asdasd', 'you', 500, true)
 
+// Function to make card and display book on page
 function addBookToDom(){
     let allCards = document.querySelectorAll('.card')
     allCards.forEach(Card => {
@@ -75,12 +77,12 @@ function addBookToDom(){
 
         removeButton.dataset.cardID = card_id
         removeButton.addEventListener('click', removeBook)
-
-        
+  
         document.querySelector('.book-container').appendChild(card)
         console.log('Card created');
         card_id++
 
+        // Function to remove book from myLibrary[]
         function removeBook(){
             let bookToRemove = parseInt(removeButton.dataset.cardID)
             myLibrary.splice(bookToRemove, 1)
@@ -91,7 +93,7 @@ function addBookToDom(){
     })
 }
 
-
+// Retrieve form data and add book to myLibrary[]
 function getFormData(){
     let title = document.getElementById('form-title').value
     let author = document.getElementById('form-author').value
