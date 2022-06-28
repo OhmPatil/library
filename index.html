@@ -10,8 +10,24 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        </div>
+    <h1 class="title">LIBRARY</h1>
+
+    <div class="form-container">
+        <button class="add-book-button">Add New Book</button>
+        <form action="" id="form" style="display: none;">
+            <label for="title">Book Title</label>
+            <input type="text" name="title" id="form-title">
+            <label for="author">Author</label>
+            <input type="text" name="author" id="form-author">
+            <label for="pages">No. of Pages</label>
+            <input type="number" name="pages" id="form-pages">
+            <label for="isRead">Read?</label>
+            <input type="checkbox" name="isRead" id="form-isRead">
+            <button class="submit" type="submit">Submit</button>
+        </form>
     </div>
+    <div class="book-container">
+
+        </div>
 </body>
 </html>

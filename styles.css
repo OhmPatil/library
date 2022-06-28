@@ -1,15 +1,48 @@
 :root{
-    /* background-color: black; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container{
+
+.book-container{
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    gap: 1%;
+
 }
 
 .card{
-    width: 450px;
-    height: 250px;
-    border: 2px solid black;
+    width: 400px;
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.title{
+    text-align: center;
+}
+
+.book-title{
+    font-size: 2rem;
+}
+
+.author{
+    font-size: 1.5rem;
+}
+
+.pages{
+    font-size: 1.25rem;
+}
+
+.isRead{
+    font-size: 1.25rem;
+}
+
+.form{
+    display: flex;
+    gap: 2%;
 }
