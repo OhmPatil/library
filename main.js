@@ -12,7 +12,16 @@ form.addEventListener('submit', function(e){
     e.preventDefault()
 })
 
+// Create empty array of books
 let myLibrary = []
+
+// If books exist in localstorage, add them to myLibrary[]
+if (localStorage.getItem('localLibrary')) {
+    console.log('Exists in local storage');
+    myLibrary = JSON.parse(localStorage.getItem('localLibrary'))   
+    addBookToDom()
+}
+else console.log('Does not exist');
 
 // Book object constructor and prototype
 function Book(title, author, pages, isRead){
@@ -34,11 +43,9 @@ function addBook(title, author, pages, isRead){
     let newBook = new Book(title, author, pages, isRead)
     myLibrary.push(newBook)
     console.log('Book Added');
+    localStorage.setItem('localLibrary', JSON.stringify(myLibrary))
     addBookToDom()
 }
-
-addBook('Hobbit', 'yah', 200, false)
-addBook('asdasd', 'woo', 500, true)
 
 // Function to make card and display book on page
 function addBookToDom(){
@@ -113,12 +120,14 @@ function addBookToDom(){
             let bookToRemove = parseInt(removeButton.dataset.cardID)
             myLibrary.splice(bookToRemove, 1)
             console.log('Book Removed');
+            localStorage.setItem('localLibrary', JSON.stringify(myLibrary))
             addBookToDom()
         }
 
         // Function to change read status of book
         function changeReadStatus(){
             myBook.isRead = !myBook.isRead
+            localStorage.setItem('localLibrary', JSON.stringify(myLibrary))
             addBookToDom()
         }
     })
