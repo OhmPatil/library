@@ -31,13 +31,6 @@ function Book(title, author, pages, isRead){
     this.isRead = isRead
 }
 
-Book.prototype.info = function(){
-    if (!this.isRead){
-        return('not read')
-    }
-    else return('read good job')
-}
-
 // Function to add book to myLibrary[]
 function addBook(title, author, pages, isRead){
     let newBook = new Book(title, author, pages, isRead)
@@ -49,6 +42,8 @@ function addBook(title, author, pages, isRead){
 
 // Function to make card and display book on page
 function addBookToDom(){
+
+    // Removing all previously added cards
     let allCards = document.querySelectorAll('.card')
     allCards.forEach(Card => {
         Card.remove()
@@ -61,7 +56,7 @@ function addBookToDom(){
 
         let title = document.createElement('div')
         title.classList.add('book-title')
-        title.textContent = `Title: ${myBook.title}`
+        title.textContent = `${myBook.title}`
 
         let author = document.createElement('div')
         author.classList.add('author')
@@ -102,6 +97,7 @@ function addBookToDom(){
         card.appendChild(removeButton)
         card.appendChild(isReadButton)
         
+        // Give same id to card, removeButton and isRead button
         card.dataset.cardID = card_id
         removeButton.dataset.cardID = card_id
         isReadButton.dataset.cardID = card_id
