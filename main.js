@@ -23,13 +23,24 @@ if (localStorage.getItem('localLibrary')) {
 }
 else console.log('Does not exist');
 
-// Book object constructor and prototype
-function Book(title, author, pages, isRead){
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.isRead = isRead
+// // Book object constructor and prototype
+// function Book(title, author, pages, isRead){
+//     this.title = title
+//     this.author = author
+//     this.pages = pages
+//     this.isRead = isRead
+// }
+
+// Book class
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.isRead = isRead
+    }
 }
+
 
 // Function to add book to myLibrary[]
 function addBook(title, author, pages, isRead){
